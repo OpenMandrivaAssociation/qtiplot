@@ -1,22 +1,17 @@
-%define	name	qtiplot
-%define	version	0.8.7
-%define	release	%mkrel 1
-%define	Summary	Data analysis and scientific plotting
-
+%define prel rc2
 %define	qtdir	%{_libdir}/qt3
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Summary:	%{Summary}
+Summary:	Data analysis and scientific plotting
+Name:		qtiplot
+Version:	0.9
+Release:	%mkrel 0.%{prel}.1
 License:	GPL
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
-Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
-
+Source0:	http://soft.proindependent.com/src/%{name}-%{version}%{prel}.tar.bz2
 # Automatically added by buildreq on Fri Dec 03 2004
 BuildRequires:	qt3-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
-BuildRequires:  ImageMagick
+BuildRequires:	ImageMagick
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -82,4 +77,3 @@ rm -rf %{buildroot}
 %{_liconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
-
