@@ -19,11 +19,11 @@ Data analysis and scientific plotting.
 Free clone of Origin.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}%{prel}
 #sed -i -e 's|INCLUDEPATH.*qwt/include|INCLUDEPATH += %{qtdir}/include/qwt|g' %{name}/%{name}.pro
 sed -i -e 's|INCLUDEPATH.*/include/qwtplot3d|INCLUDEPATH += %{qtdir}/include/qwtplot3d|g' %{name}/%{name}.pro
 sed -i -e 's|INCLUDEPATH.*D:.*|INCLUDEPATH += %{_includedir}|g' %{name}/%{name}.pro
-sed -i -e 's|helpFilePath=.*$|helpFilePath="%{_datadir}/doc/%{name}-%{version}/help.html";|g' %{name}/src/application.cpp
+sed -i -e 's|helpFilePath=.*$|helpFilePath="%{_datadir}/doc/%{name}-%{version}/help.html";|g' %{name}/src/ApplicationWindow.cpp
 sed -i -e 's|sub-3rdparty-qwt ||g' %{name}/%{name}.pro
 
 %build
@@ -36,15 +36,6 @@ qmake %{name}.pro -o Makefile
 %install
 rm -rf %{buildroot}
 install -m755 qtiplot/qtiplot -D %{buildroot}%{_bindir}/qtiplot
-install -d -m 755 %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} <<EOF
-?package(%{name}): \
-        command="%{_bindir}/%{name}" \
-	title="Qtiplot"
-        needs="X11" \
-        icon="%{name}.png" \
-        longtitle="Qt data plotting program"
-EOF
 
 #desktop-file-install --vendor="" \
 #  --remove-category="Application" \
@@ -73,7 +64,6 @@ rm -rf %{buildroot}
 %defattr(644,root,root,755)
 %doc README.html gpl_licence.txt
 %attr(755,root,root) %{_bindir}/qtiplot
-%{_menudir}/%{name}
 %{_liconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
