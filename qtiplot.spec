@@ -1,5 +1,4 @@
 %define prel rc3
-%define	qtdir	%{_libdir}/qt3
 
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
@@ -10,7 +9,7 @@ Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}%{prel}.tar.bz2
 # Automatically added by buildreq on Fri Dec 03 2004
-BuildRequires:	qt3-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
+BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	ImageMagick
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -27,10 +26,7 @@ sed -i -e 's|helpFilePath=.*$|helpFilePath="%{_datadir}/doc/%{name}-%{version}/h
 sed -i -e 's|sub-3rdparty-qwt ||g' %{name}/%{name}.pro
 
 %build
-#cd %{name}
-export QTDIR=%{qtdir}
-export PATH=$QTDIR/bin:$PATH
-qmake %{name}.pro -o Makefile
+%{qt4dir}/bin/qmake %{name}.pro -o Makefile
 %make
 
 %install
