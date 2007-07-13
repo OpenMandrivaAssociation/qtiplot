@@ -1,4 +1,4 @@
-%define prel rc2
+%define prel rc3
 %define	qtdir	%{_libdir}/qt3
 
 Summary:	Data analysis and scientific plotting
