@@ -28,35 +28,52 @@ Free clone of Origin.
 
 %install
 rm -rf %{buildroot}
-install -m755 qtiplot/qtiplot -D %{buildroot}%{_bindir}/qtiplot
+make install INSTALL_ROOT=%{buildroot}
 
-#desktop-file-install --vendor="" \
-#  --remove-category="Application" \
-#  --add-category="Qt" \
-#  --add-category="More Applications/Sciences/Data Visualization" \
-#  --add-category="X-MandrivaLinux-MoreApplications-Sciences-DataVisualization" \
-#  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/qtiplot.desktop
-
+mkdir -p %{buildroot}/applications
+cat > %{buildroot}/applications/mandriva-%{name.desktop} << EOF
+[Desktop Entry]
+Encoding=UTF-8
+Name=qtiplot
+Comment=Data analysis and scientific plotting
+Exec=qtiplot
+Icon=qtiplot
+Terminal=false
+Type=Application
+Categories=Qt;Science;DataVisualization;
+StartupNotify=true
+EOF
 
 mkdir -p %{buildroot}{%{_liconsdir},%{_iconsdir},%{_miconsdir}}
-icotool -x -i1 %{name}/src/qtiplot.ico -o qtiplot32.png
-convert -scale 48 qtiplot32.png %{buildroot}%{_liconsdir}/%{name}.png
-install -m 644 qtiplot32.png %{buildroot}%{_iconsdir}/%{name}.png
-convert -scale 16 qtiplot32.png %{buildroot}%{_miconsdir}/%{name}.png
+convert -scale 48 qtiplot_logo.png %{buildroot}%{_liconsdir}/%{name}.png
+convert -scale 32 qtiplot_logo.png %{buildroot}%{_iconsdir}/%{name}.png
+convert -scale 16 qtiplot_logo.png %{buildroot}%{_miconsdir}/%{name}.png
+
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/16x16/apps/
+convert -geometry 16x16 qtiplot_logo.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/32x32/apps/
+convert -geometry 32x32 qtiplot_logo.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/48x48/apps/
+convert -geometry 48x48 qtiplot_logo.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 %clean
 rm -rf %{buildroot}
 
 %post
 %update_menus
+%update_icon_cache hicolor
 
 %postun
 %clean_menus
+%clean_icon_cache hicolor
 
 %files
 %defattr(644,root,root,755)
 %doc README.html gpl_licence.txt
 %attr(755,root,root) %{_bindir}/qtiplot
+%{_libdir}/qtiplot/plugins
+%{_datadir}/applications/*.desktop
 %{_liconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
+%{_iconsdir}/hicolor/*/apps/*.png
