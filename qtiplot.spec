@@ -3,7 +3,7 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
 Version:	0.9
-Release:	%mkrel 0.%{prel}.1
+Release:	%mkrel -c %{prel} 1
 License:	GPL
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
@@ -30,8 +30,8 @@ Free clone of Origin.
 rm -rf %{buildroot}
 make install INSTALL_ROOT=%{buildroot}
 
-mkdir -p %{buildroot}/applications
-cat > %{buildroot}/applications/mandriva-%{name.desktop} << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Encoding=UTF-8
 Name=qtiplot
