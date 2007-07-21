@@ -8,6 +8,7 @@ License:	GPL
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}%{prel}.tar.bz2
+Patch0:		qtiplot-0.9rc3-compile-options.patch
 # Automatically added by buildreq on Fri Dec 03 2004
 BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	ImageMagick
@@ -19,11 +20,7 @@ Free clone of Origin.
 
 %prep
 %setup -q -n %{name}-%{version}%{prel}
-#sed -i -e 's|INCLUDEPATH.*qwt/include|INCLUDEPATH += %{qtdir}/include/qwt|g' %{name}/%{name}.pro
-sed -i -e 's|INCLUDEPATH.*/include/qwtplot3d|INCLUDEPATH += %{qtdir}/include/qwtplot3d|g' %{name}/%{name}.pro
-sed -i -e 's|INCLUDEPATH.*D:.*|INCLUDEPATH += %{_includedir}|g' %{name}/%{name}.pro
-sed -i -e 's|helpFilePath=.*$|helpFilePath="%{_datadir}/doc/%{name}-%{version}/help.html";|g' %{name}/src/ApplicationWindow.cpp
-sed -i -e 's|sub-3rdparty-qwt ||g' %{name}/%{name}.pro
+%patch0 -p0
 
 %build
 %{qt4dir}/bin/qmake %{name}.pro -o Makefile
