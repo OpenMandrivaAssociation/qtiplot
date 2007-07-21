@@ -23,7 +23,11 @@ Free clone of Origin.
 %patch0 -p0
 
 %build
-%{qt4dir}/bin/qmake %{name}.pro -o Makefile
+%{qt4dir}/bin/qmake %{name}.pro \
+	%if "%{_lib}" != "lib"
+		libsuff=64 \
+	%endif
+	-o Makefile
 %make
 
 %install
