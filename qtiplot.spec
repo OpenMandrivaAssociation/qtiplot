@@ -1,14 +1,12 @@
-%define prel rc3
-
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
 Version:	0.9
-Release:	%mkrel -c %{prel} 1
+Release:	%mkrel 1
 License:	GPL
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
-Source0:	http://soft.proindependent.com/src/%{name}-%{version}%{prel}.tar.bz2
-Patch0:		qtiplot-0.9rc3-compile-options.patch
+Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
+Patch0:		qtiplot-0.9-compile-options.patch
 # Automatically added by buildreq on Fri Dec 03 2004
 BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	ImageMagick
@@ -19,7 +17,7 @@ Data analysis and scientific plotting.
 Free clone of Origin.
 
 %prep
-%setup -q -n %{name}-%{version}%{prel}
+%setup -q -n %{name}-%{version}
 %patch0 -p0
 
 %build
