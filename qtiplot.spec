@@ -11,6 +11,7 @@ Patch0:		qtiplot-0.9-compile-options.patch
 BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	python-qt4
 BuildRequires:	ImageMagick
+%py_requires -d
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
