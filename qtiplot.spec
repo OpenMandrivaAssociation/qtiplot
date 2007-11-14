@@ -20,7 +20,7 @@ Free clone of Origin.
 
 %prep
 %setup -q -n %{name}-%{version}
-#%patch0 -p0
+%patch0 -p1
 
 %build
 %{qt4dir}/bin/qmake %{name}.pro \
