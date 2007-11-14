@@ -1,12 +1,12 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9
+Version:	0.9.1
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
-Patch0:		qtiplot-0.9-compile-options.patch
+Patch0:		qtiplot-0.9.1-compile-options.patch
 # Automatically added by buildreq on Fri Dec 03 2004
 BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	python-qt4 muparser-devel
@@ -20,7 +20,7 @@ Free clone of Origin.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p0
+#%patch0 -p0
 
 %build
 %{qt4dir}/bin/qmake %{name}.pro \
