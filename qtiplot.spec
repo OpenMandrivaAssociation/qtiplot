@@ -14,6 +14,7 @@ BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	python-qt4 muparser-devel
 BuildRequires:	ImageMagick
 %py_requires -d
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Data analysis and scientific plotting.
