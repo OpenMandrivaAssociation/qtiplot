@@ -1,13 +1,11 @@
-%define betaver rc3
-
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
 Version:	0.9.3
-Release:	%mkrel -c %betaver 1
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
-Source0:	http://soft.proindependent.com/src/%{name}-%{version}-%{betaver}.tar.bz2
+Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
 Patch0:		qtiplot-0.9.3-compile-options.patch
 # Automatically added by buildreq on Fri Dec 03 2004
 BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
@@ -21,7 +19,7 @@ Data analysis and scientific plotting.
 Free clone of Origin.
 
 %prep
-%setup -q -n %{name}-%{version}-%{betaver}
+%setup -q -n %{name}-%{version}
 %patch0 -p1
 
 %build
@@ -76,6 +74,7 @@ rm -rf %{buildroot}
 %defattr(644,root,root,755)
 %doc README.html gpl_licence.txt
 %attr(755,root,root) %{_bindir}/qtiplot
+%{_mandir}/man1/qtiplot.1.*
 %{_libdir}/qtiplot/plugins
 %{_datadir}/applications/*.desktop
 %{_liconsdir}/%{name}.png
