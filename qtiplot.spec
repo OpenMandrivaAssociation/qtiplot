@@ -8,8 +8,9 @@ Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
 Patch0:		qtiplot-0.9.6-compile-options.patch
 # Automatically added by buildreq on Fri Dec 03 2004
-BuildRequires:	qt4-devel libqwt-devel libqwtplot3d-devel gsl-devel icoutils
+BuildRequires:	qt4-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	python-qt4 muparser-devel
+BuildRequires:	libqwt-devel >= 5.1.0
 BuildRequires:	ImageMagick docbook-utils docbook-dtd44-xml
 %py_requires -d
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
