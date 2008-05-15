@@ -48,6 +48,9 @@ Categories=Qt;Science;DataVisualization;
 StartupNotify=true
 EOF
 
+install -D -m755 qtiplot/qtiplot %buildroot%_bindir/qtiplot
+install -D -m644 qtiplot.1 %buildroot%{_mandir}/man1/qtiplot.1
+
 mkdir -p %{buildroot}{%{_liconsdir},%{_iconsdir},%{_miconsdir}}
 convert -scale 48 qtiplot_logo.png %{buildroot}%{_liconsdir}/%{name}.png
 convert -scale 32 qtiplot_logo.png %{buildroot}%{_iconsdir}/%{name}.png
