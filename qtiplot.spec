@@ -7,6 +7,7 @@ Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
 Patch0:		qtiplot-0.9.6-compile-options.patch
+Patch1:		qtiplot-0.9.7-gcc-4.3.patch
 # Automatically added by buildreq on Fri Dec 03 2004
 BuildRequires:	qt4-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	python-qt4 muparser-devel
@@ -22,6 +23,7 @@ Free clone of Origin.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p0
 
 %build
 %{qt4dir}/bin/qmake %{name}.pro \
