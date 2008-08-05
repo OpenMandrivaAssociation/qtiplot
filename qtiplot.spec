@@ -1,7 +1,7 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
 Version:	0.9.7
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
@@ -26,12 +26,12 @@ Free clone of Origin.
 %patch1 -p0
 
 %build
-%{qt4dir}/bin/qmake %{name}.pro \
+%qmake_qt4 \
 	%if "%{_lib}" != "lib"
 		libsuff=64 \
 	%endif
 	-o Makefile
-make
+%make
 
 %install
 rm -rf %{buildroot}
