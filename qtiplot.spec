@@ -13,7 +13,7 @@ BuildRequires:	qt4-devel libqwtplot3d-devel gsl-devel icoutils
 BuildRequires:	python-qt4 muparser-devel
 BuildRequires:	boost-devel
 BuildRequires:	libqwt-devel >= 5.1.0
-BuildRequires:	ImageMagick docbook-utils docbook-dtd44-xml
+BuildRequires:	imagemagick docbook-utils docbook-dtd44-xml
 %py_requires -d
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
