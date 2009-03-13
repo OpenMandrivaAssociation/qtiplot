@@ -1,13 +1,12 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9.7.4
+Version:	0.9.7.5
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
-Patch0:		qtiplot-0.9.7.4-compile-options.patch
-Patch1:		qtiplot-0.9.7.2-gcc-4.3.patch
+Patch0:		qtiplot-0.9.7.5-compile-options.patch
 Patch2:		qtiplot-0.9.7.4-fix-str-fmt.patch
 # Automatically added by buildreq on Fri Dec 03 2004
 BuildRequires:	qt4-devel libqwtplot3d-devel gsl-devel icoutils
@@ -25,7 +24,6 @@ Free clone of Origin.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1 -b .compile
-%patch1 -p0 -b .gcc
 %patch2 -p0 -b .str
 
 %build
@@ -67,6 +65,8 @@ mkdir -p %{buildroot}%{_iconsdir}/hicolor/32x32/apps/
 convert -geometry 32x32 qtiplot_logo.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/48x48/apps/
 convert -geometry 48x48 qtiplot_logo.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+
+rm -fr %buildroot/usr/local
 
 %clean
 rm -rf %{buildroot}
