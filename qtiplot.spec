@@ -9,10 +9,12 @@ Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
 Patch0:		qtiplot-0.9.7.5-compile-options.patch
 Patch2:		qtiplot-0.9.7.4-fix-str-fmt.patch
 # Automatically added by buildreq on Fri Dec 03 2004
-BuildRequires:	qt4-devel libqwtplot3d-devel gsl-devel icoutils
+BuildRequires:	qt4-devel
+#BuildRequires:	libqwtplot3d-deve
+BuildRequires:	gsl-devel icoutils
 BuildRequires:	python-qt4 muparser-devel
 BuildRequires:	boost-devel
-BuildRequires:	libqwt-devel >= 5.1.0
+#BuildRequires:	libqwt-devel >= 5.1.0
 BuildRequires:	imagemagick docbook-utils docbook-dtd44-xml
 %py_requires -d
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
