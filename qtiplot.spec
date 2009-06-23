@@ -1,19 +1,21 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9.7.7
+Version:	0.9.7.8
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
-Patch0:		qtiplot-0.9.7.7-compile-options.patch
+Patch0:		qtiplot-0.9.7.8-compile-options.patch
+Patch1:		qtiplot-0.9.7.8-gcc44.patch
 Patch2:		qtiplot-0.9.7.4-fix-str-fmt.patch
+Patch3:		qtiplot-0.9.7.8-fix-preprocessing.patch
 BuildRequires:	qt4-devel >= 4.4.0
 #BuildRequires:	libqwtplot3d-devel
 BuildRequires:	gsl-devel icoutils
 BuildRequires:	muparser-devel >= 1.28
 BuildRequires:	boost-devel >= 1.36.0
-BuildRequires:	libqwt-devel >= 5.2.0
+#BuildRequires:	libqwt-devel >= 5.2.0
 BuildRequires:	python-qt4 >= 4.4.4
 Requires:	python-qt4 >= 4.4.4
 BuildRequires:	imagemagick docbook-utils docbook-dtd44-xml
@@ -27,7 +29,9 @@ Free clone of Origin.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1 -b .compile
+%patch1 -p1 -b .gcc44
 %patch2 -p0 -b .str
+%patch3 -p1 -b .preprocessing
 
 %build
 %qmake_qt4 \
