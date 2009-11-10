@@ -1,12 +1,12 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9.7.9
-Release:	%mkrel 2
+Version:	0.9.7.10
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
-Patch0:		qtiplot-0.9.7.9-compile-options.patch
+Patch0:		qtiplot-0.9.7.10-build.conf.patch
 Patch1:		qtiplot-0.9.7.8-gcc44.patch
 Patch2:		qtiplot-0.9.7.4-fix-str-fmt.patch
 BuildRequires:	qt4-devel >= 4.4.0
@@ -27,7 +27,7 @@ Free clone of Origin.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1 -b .compile
+%patch0 -p0 -b .compile
 %patch1 -p1 -b .gcc44
 %patch2 -p0 -b .str
 
