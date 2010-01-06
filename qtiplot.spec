@@ -1,33 +1,37 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
 Version:	0.9.7.11
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
 Patch0:		qtiplot-0.9.7.11-build.conf.patch
-Patch2:		qtiplot-0.9.7.11-fix-str-fmt.patch
+Patch1:		qtiplot-0.9.7.11-fix-str-fmt.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+
+%py_requires -d
 BuildRequires:	qt4-devel >= 4.4.0
 #BuildRequires:	libqwtplot3d-devel
-BuildRequires:	gsl-devel icoutils
+BuildRequires:	gsl-devel
+BuildRequires:	icoutils
 BuildRequires:	muparser-devel >= 1.28
 BuildRequires:	boost-devel >= 1.36.0
 #BuildRequires:	libqwt-devel >= 5.2.0
 BuildRequires:	python-qt4 >= 4.4.4
+BuildRequires:	imagemagick
+BuildRequires:	docbook-utils
+BuildRequires:	docbook-dtd44-xml
 Requires:	python-qt4 >= 4.4.4
-BuildRequires:	imagemagick docbook-utils docbook-dtd44-xml
-%py_requires -d
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Data analysis and scientific plotting.
 Free clone of Origin.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p0 -b .compile
-%patch2 -p0 -b .str
+%patch1 -p0 -b .str
 
 %build
 %qmake_qt4 \
@@ -53,9 +57,6 @@ Type=Application
 Categories=Qt;Science;DataVisualization;
 StartupNotify=true
 EOF
-
-install -D -m755 qtiplot/qtiplot %buildroot%_bindir/qtiplot
-install -D -m644 qtiplot.1 %buildroot%{_mandir}/man1/qtiplot.1
 
 mkdir -p %{buildroot}{%{_liconsdir},%{_iconsdir},%{_miconsdir}}
 convert -scale 48 qtiplot_logo.png %{buildroot}%{_liconsdir}/%{name}.png
@@ -92,6 +93,7 @@ rm -rf %{buildroot}
 %attr(755,root,root) %{_bindir}/qtiplot
 %{_mandir}/man1/qtiplot.1.*
 %{_libdir}/qtiplot/plugins
+%{_datadir}/qtiplot
 %{_datadir}/applications/*.desktop
 %{_liconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
