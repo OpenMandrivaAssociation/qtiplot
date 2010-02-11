@@ -15,7 +15,7 @@ BuildRequires:	qt4-devel >= 4.4.0
 #BuildRequires:	libqwtplot3d-devel
 BuildRequires:	gsl-devel
 BuildRequires:	icoutils
-BuildRequires:	muparser-devel >= 1.28
+BuildRequires:	muparser-devel >= 1.32
 BuildRequires:	boost-devel >= 1.36.0
 #BuildRequires:	libqwt-devel >= 5.2.0
 BuildRequires:	python-qt4 >= 4.4.4
