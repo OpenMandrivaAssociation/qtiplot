@@ -1,6 +1,6 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9.7.12
+Version:	0.9.7.13
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Other
