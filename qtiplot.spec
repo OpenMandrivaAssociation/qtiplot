@@ -1,7 +1,7 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
 Version:	0.9.8
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
@@ -12,6 +12,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %py_requires -d
 BuildRequires:	qt4-devel >= 4.4.0
+BuildRequires:	qt-assistant-adp-devel
 #BuildRequires:	libqwtplot3d-devel
 BuildRequires:	gsl-devel
 BuildRequires:	icoutils
@@ -22,6 +23,7 @@ BuildRequires:	python-qt4 >= 4.4.4
 BuildRequires:	imagemagick
 BuildRequires:	docbook-utils
 BuildRequires:	docbook-dtd44-xml
+Requires:	qt-assistant-adp
 Requires:	python-qt4 >= 4.4.4
 
 %description
