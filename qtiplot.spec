@@ -1,11 +1,11 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9.8
-Release:	%mkrel 4
+Version:	0.9.8.1
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
-Source0:	http://soft.proindependent.com/src/%{name}-%{version}.tar.bz2
+Source0:	http://download.berlios.de/qtiplot/%{name}-%{version}.tar.bz2
 Patch0:		qtiplot-0.9.7.12-build.conf.patch
 Patch1:		qtiplot-0.9.7.11-fix-str-fmt.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
