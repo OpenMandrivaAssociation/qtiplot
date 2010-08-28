@@ -8,6 +8,7 @@ Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://download.berlios.de/qtiplot/%{name}-%{version}.tar.bz2
 Patch0:		qtiplot-0.9.7.12-build.conf.patch
 Patch1:		qtiplot-0.9.7.11-fix-str-fmt.patch
+Patch2:		qtiplot-0.9.8.1-gcc45.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %py_requires -d
@@ -34,6 +35,7 @@ Free clone of Origin.
 %setup -q
 %patch0 -p1 -b .compile
 %patch1 -p0 -b .str
+%patch2 -p0 -b .gcc
 
 %build
 %qmake_qt4 \
