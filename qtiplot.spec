@@ -1,6 +1,6 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9.8.1
+Version:	0.9.8.2
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Other
@@ -35,7 +35,7 @@ Free clone of Origin.
 %setup -q
 %patch0 -p1 -b .compile
 %patch1 -p0 -b .str
-%patch2 -p0 -b .gcc
+#%patch2 -p0 -b .gcc
 
 %build
 %qmake_qt4 \
