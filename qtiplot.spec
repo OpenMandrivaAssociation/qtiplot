@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://download.berlios.de/qtiplot/%{name}-%{version}.tar.bz2
+Source1:	http://www.stat.tamu.edu/~aredd/tamuanova/tamu_anova-0.2.tar.gz
 Patch0:		qtiplot-0.9.8.4-build.conf.patch
 Patch1:		qtiplot-0.9.7.11-fix-str-fmt.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -34,8 +35,16 @@ Free clone of Origin.
 %setup -q
 %patch0 -p1 -b .compile
 %patch1 -p0 -b .str
+pushd 3rdparty
+tar xf %{SOURCE1}
+mv tamu_anova-0.2 tamu_anova
+popd
 
 %build
+pushd 3rdparty/tamu_anova
+%configure2_5x --disable-shared --enable-static
+%make
+popd
 %qmake_qt4 \
 	%if "%{_lib}" != "lib"
 		libsuff=64 \
