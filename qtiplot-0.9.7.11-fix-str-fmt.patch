@@ -1,0 +1,11 @@
+--- qtiplot/src/core/ApplicationWindow.cpp.str	2010-01-04 09:31:01.000000000 +0100
++++ qtiplot/src/core/ApplicationWindow.cpp	2010-01-05 16:34:10.000000000 +0100
+@@ -4732,7 +4732,7 @@
+ #ifdef SCRIPTING_CONSOLE
+ 	if(!text.stripWhiteSpace().isEmpty()) console->append(text);
+ #else
+-	printf(text.ascii());
++	printf("%s",text.ascii());
+ #endif
+ }
+ 
