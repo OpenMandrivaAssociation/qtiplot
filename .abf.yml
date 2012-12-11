@@ -1,3 +1,4 @@
+---
 sources:
-  "qtiplot-0.9.8.5.tar.bz2:"	0305097eb096adf332d319b0619c14fc42f01cf4
-  "tamu_anova-0.2.tar.gz:"	8c7ffae14ebe92f27d20ff1f0e325875fa6ced53
+  qtiplot-0.9.8.9.tar.bz2: 73b17dd9195c3d86750d5f1f5bdd4d5483c5fe30
+  tamu_anova-0.2.tar.gz: 8c7ffae14ebe92f27d20ff1f0e325875fa6ced53

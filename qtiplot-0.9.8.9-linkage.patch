@@ -1,0 +1,12 @@
+diff -urN qtiplot-0.9.8.9/qtiplot/qtiplot.pro qtiplot-0.9.8.9-patched/qtiplot/qtiplot.pro
+--- qtiplot-0.9.8.9/qtiplot/qtiplot.pro	2011-11-03 03:55:25.000000000 +1100
++++ qtiplot-0.9.8.9-patched/qtiplot/qtiplot.pro	2012-11-24 03:44:16.788687581 +1100
+@@ -20,6 +20,8 @@
+ LIBS         += $$QWT_LIBS
+ LIBS         += $$QWT3D_LIBS
+ LIBS         += $$GSL_LIBS
++LIBS         += -lz -lGLU
++
+ 
+ #############################################################################
+ ###################### BASIC PROJECT PROPERTIES #############################

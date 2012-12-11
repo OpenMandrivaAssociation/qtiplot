@@ -1,15 +1,20 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
-Version:	0.9.8.5
-Release:	%mkrel 1
+Version:	0.9.8.9
+Release:	1
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://download.berlios.de/qtiplot/%{name}-%{version}.tar.bz2
 Source1:	http://www.stat.tamu.edu/~aredd/tamuanova/tamu_anova-0.2.tar.gz
-Patch0:		qtiplot-0.9.8.5-build.conf.patch
+Source2:	build.conf
+Patch0:		qtiplot-0.9.8.9-rosa-pro.patch
 Patch1:		qtiplot-0.9.7.11-fix-str-fmt.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Patch2:		qtiplot-0.9.8.9-debian-fix_paths.patch
+Patch3:		qtiplot-0.9.8.9-debian-crasher_without_internet.patch
+Patch4:		qtiplot-0.9.8.9-debian-glu_include.patch
+Patch5:		qtiplot-0.9.8.9-rosa-gl2ps_zlib_png.patch
+Patch6:		qtiplot-0.9.8.9-linkage.patch
 
 %py_requires -d
 BuildRequires:	qt4-devel >= 4.4.0
@@ -23,6 +28,8 @@ BuildRequires:	python-qt4 >= 4.4.4
 BuildRequires:	imagemagick
 BuildRequires:	docbook-utils
 BuildRequires:	docbook-dtd44-xml
+BuildRequires:	pkgconfig(glu)
+BuildRequires:	qtexengine-devel
 Requires:	qt-assistant-adp
 Requires:	python-qt4 >= 4.4.4
 
@@ -34,17 +41,25 @@ Free clone of Origin.
 %setup -q
 %patch0 -p1 -b .compile
 %patch1 -p0 -b .str
+%patch2 -p1 -b .path
+%patch3 -p1 -b .inet
+%patch4 -p1 -b .glu
+%patch5 -p1 -b .zlib_png
+%patch6 -p1 -b .linkage
 pushd 3rdparty
 tar xf %{SOURCE1}
 mv tamu_anova-0.2 tamu_anova
 popd
+
+cp %{SOURCE2} .
+sed -i 's|@LIBDIR@|%{_libdir}|g;s|@INCLUDEDIR@|%{_includedir}|g' build.conf
 
 %build
 pushd 3rdparty/tamu_anova
 %configure2_5x --disable-shared --enable-static
 %make
 popd
-%qmake_qt4 \
+%qmake_qt4 -d \
 	%if "%{_lib}" != "lib"
 		libsuff=64 \
 	%endif
@@ -52,7 +67,6 @@ popd
 %make
 
 %install
-rm -rf %{buildroot}
 make install INSTALL_ROOT=%{buildroot}
 
 mkdir -p %{buildroot}%{_datadir}/applications
@@ -80,22 +94,10 @@ convert -geometry 32x32 qtiplot_logo.png %{buildroot}%{_iconsdir}/hicolor/32x32/
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/48x48/apps/
 convert -geometry 48x48 qtiplot_logo.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
-rm -fr %buildroot/usr/local
+rm -fr %{buildroot}/usr/local
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%clean_icon_cache hicolor
-%endif
+# Nuke the junk
+find %{buildroot} -name libqwtplot3d.a -delete
 
 %files
 %defattr(644,root,root,755)
@@ -109,3 +111,4 @@ rm -rf %{buildroot}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/hicolor/*/apps/*.png
+

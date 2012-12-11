@@ -1,0 +1,19 @@
+Index: qtiplot-0.9.8.9/3rdparty/qwtplot3d/3rdparty/gl2ps/gl2ps.h
+===================================================================
+--- qtiplot-0.9.8.9.orig/3rdparty/qwtplot3d/3rdparty/gl2ps/gl2ps.h
++++ qtiplot-0.9.8.9/3rdparty/qwtplot3d/3rdparty/gl2ps/gl2ps.h
+@@ -69,12 +69,8 @@
+ /* Support for compressed PostScript/PDF/SVG and for embedded PNG
+    images in SVG */
+ 
+-#if defined(HAVE_ZLIB) || defined(HAVE_LIBZ)
+-#  define GL2PS_HAVE_ZLIB
+-#  if defined(HAVE_LIBPNG) || defined(HAVE_PNG)
+-#    define GL2PS_HAVE_LIBPNG
+-#  endif
+-#endif
++#define GL2PS_HAVE_ZLIB
++#define GL2PS_HAVE_LIBPNG
+ 
+ /* Version number */
+ 

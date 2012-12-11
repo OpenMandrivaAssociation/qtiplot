@@ -1,0 +1,45 @@
+Index: qtiplot-0.9.8.9/qtiplot.pro
+===================================================================
+--- qtiplot-0.9.8.9.orig/qtiplot.pro
++++ qtiplot-0.9.8.9/qtiplot.pro
+@@ -1,7 +1,6 @@
+ TEMPLATE = subdirs
+ 
+ SUBDIRS = fitPlugins \
+-	    manual \
+ 	    3rdparty/qwt \
+ 		3rdparty/qwtplot3d \
+         qtiplot
+Index: qtiplot-0.9.8.9/qtiplot/qtiplot.pro
+===================================================================
+--- qtiplot-0.9.8.9.orig/qtiplot/qtiplot.pro
++++ qtiplot-0.9.8.9/qtiplot/qtiplot.pro
+@@ -42,7 +42,6 @@ contains(CONFIG, CustomInstall){
+ 	INSTALLS        += target
+ 	INSTALLS        += translations
+ 	INSTALLS        += manual
+-	INSTALLS        += documentation
+ 	unix:INSTALLS        += man
+ 
+ 	unix: INSTALLBASE = /usr
+@@ -114,9 +113,9 @@ translations.files += translations/qtipl
+ 		translations/qtiplot_sv.qm
+ 
+ isEmpty(LUPDATE): LUPDATE = lupdate
+-#system($$LUPDATE -verbose qtiplot.pro)
++system($$LUPDATE -verbose qtiplot.pro)
+ isEmpty(LRELEASE): LRELEASE = lrelease
+-#system($$LRELEASE -verbose qtiplot.pro)
++system($$LRELEASE -verbose qtiplot.pro)
+ 
+ ###################### DOCUMENTATION ########################################
+ 
+@@ -159,7 +158,7 @@ contains(SCRIPTING_LANGS, Python) {
+   				    qtiUtil.py \
+   				    qti_wordlist.txt \
+ 
+-  	unix: pythonconfig.path = /usr/local/qtiplot
++  	unix: pythonconfig.path = /usr/share/qtiplot
+   	win32: pythonconfig.path = $$INSTALLBASE
+   	DEFINES += PYTHON_CONFIG_PATH="\\\"$$replace(pythonconfig.path," ","\ ")\\\"
+   }

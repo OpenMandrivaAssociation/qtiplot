@@ -1,0 +1,14 @@
+Installs qti_wordlist to /usr/share/qtiplot
+Index: qtiplot/qtiplot/src/core/ApplicationWindow.cpp
+===================================================================
+--- qtiplot.orig/qtiplot/src/core/ApplicationWindow.cpp	2012-11-07 11:14:09.961706700 -0500
++++ qtiplot/qtiplot/src/core/ApplicationWindow.cpp	2012-11-07 11:14:15.021706679 -0500
+@@ -18856,7 +18856,7 @@
+ 	words.append("cell");
+ #ifdef SCRIPTING_PYTHON
+ 	if (scriptEnv->name() == QString("Python")){
+-		QString fn = d_python_config_folder + "/qti_wordlist.txt";
++		QString fn = "/usr/share/qtiplot/qti_wordlist.txt";
+ 		QFile file(fn);
+ 		if (!file.open(QFile::ReadOnly)){
+ 			QMessageBox::critical(this, tr("QtiPlot - Warning"),
