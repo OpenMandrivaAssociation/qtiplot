@@ -24,14 +24,15 @@ BuildRequires:	gsl-devel
 BuildRequires:	icoutils
 BuildRequires:	muparser-devel >= 1.32
 #BuildRequires:	libqwt-devel >= 5.2.0
-BuildRequires:	python-qt4 >= 4.4.4
+BuildRequires:	python2-qt4 >= 4.4.4
 BuildRequires:	imagemagick
 BuildRequires:	docbook-utils
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	qtexengine-devel
+BuildRequires:	pkgconfig(python2)
 Requires:	qt-assistant-adp
-Requires:	python-qt4 >= 4.4.4
+Requires:	python2-qt4 >= 4.4.4
 
 %description
 Data analysis and scientific plotting.
@@ -56,7 +57,8 @@ sed -i 's|@LIBDIR@|%{_libdir}|g;s|@INCLUDEDIR@|%{_includedir}|g' build.conf
 
 %build
 pushd 3rdparty/tamu_anova
-%configure2_5x --disable-shared --enable-static
+export PYTHON=%{__python2}
+%configure --disable-shared --enable-static
 %make
 popd
 %qmake_qt4 -d \
@@ -100,7 +102,6 @@ rm -fr %{buildroot}/usr/local
 find %{buildroot} -name libqwtplot3d.a -delete
 
 %files
-%defattr(644,root,root,755)
 %doc README.html gpl_licence.txt
 %attr(755,root,root) %{_bindir}/qtiplot
 %{_mandir}/man1/qtiplot.1.*
