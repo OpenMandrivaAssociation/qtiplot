@@ -28,7 +28,7 @@ BuildRequires:	qtexengine-devel
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(gsl)
 BuildRequires:	pkgconfig(muparser)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(QtAssistantClient)
 Requires:	qt-assistant-adp
 Requires:	python2-qt4
@@ -69,6 +69,9 @@ popd
 
 cp %{SOURCE2} .
 sed -i 's|@LIBDIR@|%{_libdir}|g;s|@INCLUDEDIR@|%{_includedir}|g' build.conf
+
+# use py2
+sed -i -e "s,/usr/bin/python,%{__python2},g" qtiplot/*.py
 
 %build
 pushd 3rdparty/tamu_anova
