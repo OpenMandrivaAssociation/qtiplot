@@ -8,6 +8,7 @@ Url:		http://soft.proindependent.com/qtiplot.html
 Source0:	http://download.berlios.de/qtiplot/%{name}-%{version}.tar.bz2
 Source1:	http://www.stat.tamu.edu/~aredd/tamuanova/tamu_anova-0.2.tar.gz
 Source2:	build.conf
+Source3:	qtiplot.rpmlintrc
 Patch0:		qtiplot-0.9.8.9-rosa-pro.patch
 Patch1:		qtiplot-0.9.7.11-fix-str-fmt.patch
 Patch2:		qtiplot-0.9.8.9-debian-fix_paths.patch
