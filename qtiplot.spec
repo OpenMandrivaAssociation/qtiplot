@@ -1,7 +1,7 @@
 Summary:	Data analysis and scientific plotting
 Name:		qtiplot
 Version:	0.9.8.9
-Release:	1
+Release:	1.1
 License:	GPLv2+
 Group:		Sciences/Other
 Url:		http://soft.proindependent.com/qtiplot.html
@@ -100,7 +100,6 @@ rm -fr %{buildroot}/usr/local
 find %{buildroot} -name libqwtplot3d.a -delete
 
 %files
-%defattr(644,root,root,755)
 %doc README.html gpl_licence.txt
 %attr(755,root,root) %{_bindir}/qtiplot
 %{_mandir}/man1/qtiplot.1.*
