@@ -4,7 +4,7 @@ Version:	0.9.8.9
 Release:	3
 License:	GPLv2+
 Group:		Sciences/Other
-Url:		http://soft.proindependent.com/qtiplot.html
+Url:		https://soft.proindependent.com/qtiplot.html
 Source0:	http://download.berlios.de/qtiplot/%{name}-%{version}.tar.bz2
 Source1:	http://www.stat.tamu.edu/~aredd/tamuanova/tamu_anova-0.2.tar.gz
 Source2:	build.conf
